@@ -18,6 +18,6 @@ class MusicPlayerEventListener(
 
     override fun onPlayerError(error: ExoPlaybackException) {
         super.onPlayerError(error)
-        Toast.makeText(musicService, "An unknown error occured", Toast.LENGTH_SHORT).show()
+        Toast.makeText(musicService, "An unknown error occurred", Toast.LENGTH_SHORT).show()
     }
 }
