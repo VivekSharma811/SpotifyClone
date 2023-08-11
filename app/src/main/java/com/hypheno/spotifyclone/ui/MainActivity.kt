@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.media.session.PlaybackStateCompat
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2.OnPageChangeCallback
 import com.bumptech.glide.RequestManager
 import com.google.android.material.snackbar.Snackbar
@@ -57,6 +59,23 @@ class MainActivity : AppCompatActivity() {
                 mainViewModel.playOrToggleSong(it, true)
             }
         }
+
+        swipeSongAdapter.setItemClickListener {
+            navHostFragment.findNavController().navigate(R.id.globalActionToSong)
+        }
+
+        navHostFragment.findNavController().addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.homeFragment -> showBottomBar(true)
+                R.id.songFragment -> showBottomBar(false)
+            }
+        }
+    }
+
+    private fun showBottomBar(show: Boolean) {
+        ivCurSongImage.isVisible = show
+        vpSong.isVisible = show
+        ivPlayPause.isVisible = show
     }
 
     private fun switchViewPagerToCurrentSong(song: Song) {

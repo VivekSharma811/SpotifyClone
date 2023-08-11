@@ -10,5 +10,14 @@
         android:name="com.hypheno.spotifyclone.ui.fragments.HomeFragment"
         android:label="HomeFragment"
         tools:layout="@layout/fragment_home" />
+    <fragment
+        android:id="@+id/songFragment"
+        android:name="com.hypheno.spotifyclone.ui.fragments.SongFragment"
+        android:label="SongFragment"
+        tools:layout="@layout/fragment_song" />
+
+    <action
+        android:id="@+id/globalActionToSong"
+        app:destination="@id/songFragment" />
 
 </navigation>
